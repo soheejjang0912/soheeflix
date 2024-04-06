@@ -1,20 +1,28 @@
-import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 function Detail(){
+    const [movie, setMovies] = useState([]);
     const {id} = useParams();
     const getMovie = async () => {
         const response = await fetch(
             `https://yts.mx/api/v2/movie_details.json?movie_id=${id}`
         );
         const json = await response.json(); 
-        console.log(json);
+        setMovies(json.data.movie);
     };
     
+    console.log(movie);
     useEffect(()=>{
         getMovie();
     }, []);
-    return (<h1>Detail</h1>);
+    return (
+        <div>
+            <h2>{movie.title_long}</h2>
+            <img src={movie.medium_cover_image}></img>
+            <h4>{movie.description_full}</h4>
+        </div>
+    );
 }
 
 export default Detail;
