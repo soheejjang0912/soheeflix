@@ -5,7 +5,7 @@ function Header() {
         /* header */
         <header className={styles.header}> 
             <h1 className={styles.title}>SOHEEFLIX</h1>
-            <nav className={styles.nav__right}> 
+            <nav className={styles.nav}> 
                 <ul className={styles.menu}>
                     <li><a href="/">Home</a></li>
                     <li><a href="/">Movie</a></li>
