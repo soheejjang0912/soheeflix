@@ -53,7 +53,7 @@ function Home(){
         <div>
             <Header />
             {   
-                loading != 0 ?  <h1 className={cstyles.loading}>loading...</h1> 
+                loading !== 0 ?  <h1 className={cstyles.loading}>loading...</h1> 
                 : (
                     <div>
                         <div >
