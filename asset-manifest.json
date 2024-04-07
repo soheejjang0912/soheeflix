@@ -1,10 +1,13 @@
 {
   "files": {
-    "main.js": "/soheeflix/static/js/main.b8cb4fe3.js",
+    "main.css": "/soheeflix/static/css/main.c096b90a.css",
+    "main.js": "/soheeflix/static/js/main.e199519a.js",
     "index.html": "/soheeflix/index.html",
-    "main.b8cb4fe3.js.map": "/soheeflix/static/js/main.b8cb4fe3.js.map"
+    "main.c096b90a.css.map": "/soheeflix/static/css/main.c096b90a.css.map",
+    "main.e199519a.js.map": "/soheeflix/static/js/main.e199519a.js.map"
   },
   "entrypoints": [
-    "static/js/main.b8cb4fe3.js"
+    "static/css/main.c096b90a.css",
+    "static/js/main.e199519a.js"
   ]
 }
