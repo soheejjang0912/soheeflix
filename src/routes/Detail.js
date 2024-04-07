@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Header from "../components/Header";
+import DetailMovie from "../components/DetailMovie";
 
 function Detail(){
+    const [loading, setLoading] = useState(true);
     const [movie, setMovies] = useState([]);
     const {id} = useParams();
     const getMovie = async () => {
@@ -11,18 +13,27 @@ function Detail(){
         );
         const json = await response.json(); 
         setMovies(json.data.movie);
-    };
-    
-    console.log(movie);
+        setLoading(false);
+    }; 
     useEffect(()=>{
         getMovie();
     }, []);
+    console.log(movie.description_full);
     return (
         <div>
-            <Header />
-            <h2>{movie.title_long}</h2>
-            <img src={movie.medium_cover_image}></img>
-            <h4>{movie.description_full}</h4>
+            <Header /> 
+            {   
+                loading ? <h1>loading...</h1> 
+                : (<div>
+                {    
+                    <DetailMovie
+                        title_long={movie.title_long}
+                        medium_cover_image={movie.medium_cover_image}
+                        description_full={movie.description_full} 
+                    /> 
+                }
+                </div>)
+            } 
         </div>
     );
 }

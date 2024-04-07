@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Movie from "../components/Movie"; //이거때문에 진짜 시간 엄청 씀..
+import Movie from "../components/Movie"; 
 import Header from "../components/Header";
 
 function Home(){
