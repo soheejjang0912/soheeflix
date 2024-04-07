@@ -48,11 +48,12 @@ function Home(){
         getComedyMovies();
         getActionMovies();
     }, []); 
+    console.log(loading);
     return (
         <div>
             <Header />
             {   
-                loading == 0 ?  <h1 className={cstyles.normal__font}>loading...</h1> 
+                loading != 0 ?  <h1 className={cstyles.loading}>loading...</h1> 
                 : (
                     <div>
                         <div >
