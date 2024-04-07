@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Movie from "../components/Movie"; //이거때문에 진짜 시간 엄청 씀..
+import Header from "../components/Header";
 
 function Home(){
     const [loading, setLoading] = useState(true);
@@ -15,27 +16,27 @@ function Home(){
     useEffect(()=> {
         getMovies();
     }, []);
-    console.log(movies);
+ 
     return (
         <div>
-        {
-            loading ? <h1>loading...</h1> 
-            : (<div>
-            {
-                movies.map((movie)=>
-                <Movie 
-                    key={movie.id}
-                    id={movie.id}
-                    coverImage={movie.medium_cover_image}
-                    title={movie.title}
-                    summary={movie.summary}
-                    genres={movie.genres}
-                />
-                ) 
-            }
-            </div>)
-        }
-        <h1>soheeflix</h1>
+            <Header />
+            {   
+                loading ? <h1>loading...</h1> 
+                : (<div>
+                {
+                    movies.map((movie)=>
+                    <Movie 
+                        key={movie.id}
+                        id={movie.id}
+                        coverImage={movie.medium_cover_image}
+                        title={movie.title}
+                        summary={movie.summary}
+                        genres={movie.genres}
+                    />
+                    ) 
+                }
+                </div>)
+            } 
         </div>
     );
 }

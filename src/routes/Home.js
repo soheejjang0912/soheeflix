@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "../css/Home.module.css";
+import { Link } from "react-router-dom";
 
 function Home(){
     const [loading, setLoading] = useState(true);
@@ -19,7 +20,9 @@ function Home(){
     return (
         <div className={styles.centered}> 
             <h1 className={styles.title}>SOHEEFLIX</h1>
-            <button className={styles.button}> 무료로 시작하기</button>
+            <Link to={`/movie/`}>
+                <button className={styles.button}> 무료로 시작하기</button>
+            </Link>
         </div>
     );
 }

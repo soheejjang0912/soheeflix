@@ -6,7 +6,7 @@ import {
 import Home from "./routes/Home";
 import List from "./routes/List";
 import Detail from "./routes/Detail";
-import "./css/Common.module.css";
+import "./css/App.module.css";
 
 function App() {
   return(

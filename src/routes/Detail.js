@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Header from "../components/Header";
 
 function Detail(){
     const [movie, setMovies] = useState([]);
@@ -18,6 +19,7 @@ function Detail(){
     }, []);
     return (
         <div>
+            <Header />
             <h2>{movie.title_long}</h2>
             <img src={movie.medium_cover_image}></img>
             <h4>{movie.description_full}</h4>
