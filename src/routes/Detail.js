@@ -18,7 +18,7 @@ function Detail(){
     useEffect(()=>{
         getMovie();
     }, []);
-    console.log(movie.description_full);
+    console.log(movie);
     return (
         <div>
             <Header /> 
@@ -27,8 +27,10 @@ function Detail(){
                 : (<div>
                 {    
                     <DetailMovie
+                        background_image_original={movie.background_image_original}
                         title_long={movie.title_long}
-                        medium_cover_image={movie.medium_cover_image}
+                        rating={movie.rating}
+                        image={movie.medium_cover_image}
                         description_full={movie.description_full} 
                     /> 
                 }

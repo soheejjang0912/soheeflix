@@ -1,0 +1,9 @@
+.flex {
+    display: flex; /* flexbox 사용 */
+    align-items: center; /* 수직 중앙 정렬 */
+  }
+  
+  .flex img {
+    margin-right: 10px; /* 이미지와 텍스트 사이에 여백 추가 */
+  }
+  

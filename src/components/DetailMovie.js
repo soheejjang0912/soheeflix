@@ -1,19 +1,33 @@
 import PropTypes from "prop-types";
+import styles from "../css/Common.module.css";
+import dstyles from "../css/DetailMovie.module.css";
 
-function DetailMovie({title_long, medium_cover_image, description_full}){
-    console.log("?", title_long, medium_cover_image, description_full);
+function DetailMovie({background_image_original, title_long, rating, image, description_full}){
+    const backgroundImage = {
+        backgroundImage: `url(${background_image_original})`, // 배경 이미지 경로
+        width: '100vw', // 화면 너비의 100%로 설정
+        height: '100vh', // 화면 높이의 100%로 설정
+        backgroundSize: 'cover', // 배경 이미지를 컨테이너에 맞게 확대
+        backgroundPosition: 'center' // 배경 이미지를 가운데 정렬
+    };
+    
     return (
-        <div>
-            <h2>{title_long}</h2>
-            <img src={medium_cover_image}></img>
-            <h4>{description_full}</h4>
+        <div style={backgroundImage}>
+            <h2 className={styles.title__font}>{title_long}</h2>
+            <div className={dstyles.flex}>
+                <img src={image}></img>
+                <div>
+                    <h4 className={styles.normal__font}>평점 : {rating}</h4>
+                    <h4 className={styles.normal__font}>{description_full}</h4>
+                </div>
+            </div>
         </div>
     );
 }
 
 DetailMovie.prototype = {
     title_long: PropTypes.number.isRequired,
-    medium_cover_image: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
     description_full: PropTypes.string.isRequired,
 };
 
