@@ -2,3 +2,11 @@
     font-family: 'Courier New', Courier, monospace;
     font-size: 18px;
 }
+
+.image_container {
+    display: flex;
+    overflow-x: auto; /* 가로 스크롤을 가능하게 함 */
+    white-space: nowrap; /* 이미지가 가로로 나열되도록 함 */ 
+    scroll-behavior: smooth; /* 부드러운 스크롤을 적용 */ 
+}
+ 

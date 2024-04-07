@@ -1,4 +1,4 @@
-.centered {
+.insert__container{   
     display: flex; /* Flexbox 사용 */
     flex-direction: column; /* 요소를 수직으로 배치 */
     justify-content: center; /* 수직 방향으로 가운데 정렬 */
@@ -19,3 +19,24 @@
     border-radius: 0.25rem; /* 버튼을 동그랗게 만듭니다 */
     padding: 20px 40px; /* 내부 여백을 조절하여 버튼의 크기를 늘립니다 */
 }
+
+.image__container { 
+    display: flex;
+    overflow-x: auto; /* 가로 스크롤을 가능하게 함 */
+    white-space: nowrap; /* 이미지가 가로로 나열되도록 함 */ 
+    scroll-behavior: smooth; /* 부드러운 스크롤을 적용 */ 
+}
+
+.image__wrapper {
+    margin-right: 10s; /* 이미지 사이 간격 조절 */
+    animation: scrollAnimation 70s linear infinite; /* 10초 동안 가로로 이동하면서 반복 */
+}
+
+@keyframes scrollAnimation {
+  0% {
+    transform: translateX(0); /* 처음에 오른쪽 끝으로 이동하여 시작 */
+  }
+  100% {
+    transform: translateX(-1000%); /* 가로로 이동하면서 왼쪽으로 이동 */
+  }
+} 

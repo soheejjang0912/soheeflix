@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import styles from "../css/Movie.module.css";
+import styles from "../css/Home.module.css";
 
-function Movie({id, coverImage, title, index}){
+function HomeList({id, coverImage, title, index}){
     return (
         <div className={styles.image__wrapper}>  
             <Link to={`/movie/${id}`}>
@@ -12,10 +12,10 @@ function Movie({id, coverImage, title, index}){
     );
 }
 
-Movie.prototype = {
+HomeList.prototype = {
     id: PropTypes.number.isRequired,
     coverImage: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
 };
 
-export default Movie;
+export default HomeList;
