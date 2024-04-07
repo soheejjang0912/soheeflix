@@ -8,7 +8,7 @@ function Home(){
     const [movies, setMovies] = useState([]);
     const getMovies = async() => {
         const response = await fetch(
-            `https://yts-proxy.now.sh/list_movies.json?minimum_rating=8.8&sort_by=year`
+            `https://yts-proxy.now.sh/list_movies.json?minimum_rating=8.8&sort_by=date_added`
         );
         const json = await response.json();
         setMovies(json.data.movies);

@@ -7,9 +7,9 @@ function Header() {
             <h1 className={styles.title}>SOHEEFLIX</h1>
             <nav className={styles.nav}> 
                 <ul className={styles.menu}>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/">Movie</a></li>
-                    <li><a href="/">Recommand</a></li>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="/movie">MOVIE</a></li>
+                    <li><a href="/">RECOMMAND</a></li>
                 </ul>
             </nav>
         </header>

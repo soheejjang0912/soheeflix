@@ -6,4 +6,10 @@
   .flex img {
     margin-right: 10px; /* 이미지와 텍스트 사이에 여백 추가 */
   }
-  
+
+  .detail__container{
+    position: absolute; /* 위치를 절대 위치로 설정 */
+    top: 50%; /* 위쪽 여백을 화면 세로 중앙에 위치하도록 설정 */
+    left: 50%; /* 왼쪽 여백을 화면 가로 중앙에 위치하도록 설정 */
+    transform: translate(-50%, -50%); /* 가운데 정렬을 위해 요소의 절반 너비와 높이만큼 이동 */
+  }

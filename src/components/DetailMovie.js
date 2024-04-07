@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import styles from "../css/Common.module.css";
 import dstyles from "../css/DetailMovie.module.css";
 
-function DetailMovie({background_image_original, title_long, rating, image, description_full}){
+function DetailMovie({background_image_original, title_long, rating, image, description_full, genres}){
     const backgroundImage = {
         backgroundImage: `url(${background_image_original})`, // 배경 이미지 경로
         width: '100vw', // 화면 너비의 100%로 설정
@@ -12,13 +12,19 @@ function DetailMovie({background_image_original, title_long, rating, image, desc
     };
     
     return (
-        <div style={backgroundImage}>
-            <h2 className={styles.title__font}>{title_long}</h2>
-            <div className={dstyles.flex}>
-                <img src={image}></img>
-                <div>
-                    <h4 className={styles.normal__font}>평점 : {rating}</h4>
-                    <h4 className={styles.normal__font}>{description_full}</h4>
+        <div style={backgroundImage}> 
+            <div className={dstyles.detail__container}>
+                <div className={dstyles.flex}>
+                    <img src={image}></img>
+                    <div>
+                        <h2 className={styles.title__font}>{title_long}</h2>
+                        <h4 className={styles.normal__font}>평점 : {rating}</h4>
+                        <ul className={styles.normal__font}>
+                            {genres.map((g) => (
+                                <li key={g}>{g}</li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

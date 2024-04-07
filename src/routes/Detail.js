@@ -32,6 +32,7 @@ function Detail(){
                         rating={movie.rating}
                         image={movie.medium_cover_image}
                         description_full={movie.description_full} 
+                        genres={movie.genres}
                     /> 
                 }
                 </div>)
