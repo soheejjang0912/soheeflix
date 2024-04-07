@@ -18,33 +18,32 @@ function Home(){
         getMovies();
     }, []);
     console.log(movies);
-    return (
-        <div>
-            <div> 
-                <div className={styles.insert__container}>
-                    <h1 className={styles.title}>SOHEEFLIX</h1>
-                    <Link to={`/movie/`}>
-                        <button className={styles.button}> 무료로 시작하기</button>
-                    </Link>
-                </div> 
-                {   
-                    loading ?  <h1>loading...</h1> 
-                    : (<div className={styles.image__container}>
-                            {
-                                movies.map((movie, index)=>
-                                    <HomeList 
-                                        key={movie.id}
-                                        id={movie.id}
-                                        coverImage={movie.large_cover_image}
-                                        title={movie.title}
-                                        index={movie.index}
-                                    />
-                                ) 
-                            } 
-                        </div>)
-                } 
+    return ( 
+        <div className={styles.home__container}> 
+            <div className={styles.insert__container}>
+                <h1 className={styles.title}>SOHEEFLIX</h1>
+                <Link to={`/movie/`}>
+                    <button className={styles.button}> 무료로 시작하기</button>
+                </Link>
             </div> 
-        </div> 
+            <div className={styles.block__container}></div>
+            {   
+                loading ?  <h1>loading...</h1> 
+                : (<div className={styles.image__container}>
+                        {
+                            movies.map((movie, index)=>
+                                <HomeList 
+                                    key={movie.id}
+                                    id={movie.id}
+                                    coverImage={movie.large_cover_image}
+                                    title={movie.title}
+                                    index={movie.index}
+                                />
+                            ) 
+                        } 
+                    </div>)
+            } 
+        </div>  
     );
 }
 export default Home;

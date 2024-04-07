@@ -1,9 +1,30 @@
-.insert__container{   
+ 
+.home__container{
+  position: relative; /* 부모 요소에 대해 상대적인 위치 설정 */ 
+  height: 100%;
+}
+
+.insert__container{    
     display: flex; /* Flexbox 사용 */
     flex-direction: column; /* 요소를 수직으로 배치 */
     justify-content: center; /* 수직 방향으로 가운데 정렬 */
     align-items: center; /* 가로 방향으로 가운데 정렬 */
     height: 100vh; /* 화면 전체 높이를 차지하도록 설정 */
+    position: absolute; /* 부모 요소에 대해 상대적인 위치 설정했으므로 절대 위치 설정 가능 */ 
+    left: 50%; /* 부모 요소의 50% 너비에 배치 */
+    transform: translate(-50%, 0%); /* 정 가운데로 이동 */
+    z-index: 2;
+}
+
+.block__container{    
+  position: fixed; /* 고정 위치 */
+    top: 0; /* 화면 위에 고정 */
+    left: 0; /* 화면 왼쪽에 고정 */
+    width: 100%; /* 전체 너비 */
+    height: 100%; /* 전체 높이 */
+    background-color: rgba(67, 111, 128, 0.7); /* 투명 회색 배경 설정 */
+    z-index: 1; /* 다른 요소 위에 배치 */
+    overflow: hidden;
 }
 
 .title{
@@ -20,7 +41,9 @@
     padding: 20px 40px; /* 내부 여백을 조절하여 버튼의 크기를 늘립니다 */
 }
 
-.image__container { 
+.image__container {  
+    position: absolute;  
+    z-index: 0;
     display: flex;
     overflow-x: auto; /* 가로 스크롤을 가능하게 함 */
     white-space: nowrap; /* 이미지가 가로로 나열되도록 함 */ 
@@ -28,7 +51,7 @@
 }
 
 .image__wrapper {
-    margin-right: 10s; /* 이미지 사이 간격 조절 */
+    margin-right: 10px; /* 이미지 사이 간격 조절 */
     animation: scrollAnimation 70s linear infinite; /* 10초 동안 가로로 이동하면서 반복 */
 }
 

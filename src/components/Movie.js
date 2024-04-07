@@ -4,11 +4,13 @@ import styles from "../css/Movie.module.css";
 
 function Movie({id, coverImage, title, index}){
     return (
-        <div className={styles.image__wrapper}>  
-            <Link to={`/movie/${id}`}>
-                <img src={coverImage} alt={title}></img>
-            </Link>
-        </div>
+        <div> 
+            <div className={styles.image__wrapper}>  
+                <Link to={`/movie/${id}`}>
+                    <img src={coverImage} alt={title}></img>
+                </Link>
+            </div>
+        </div> 
     );
 }
 
