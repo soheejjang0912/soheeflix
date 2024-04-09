@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "../css/Header.module.css";
 
 function Header() {
@@ -7,9 +8,15 @@ function Header() {
             <h1 className={styles.title}>SOHEEFLIX</h1>
             <nav className={styles.nav}> 
                 <ul className={styles.menu}>
-                    <li><a href="/">HOME</a></li>
-                    <li><a href="/movie">MOVIE</a></li>
-                    <li><a href="/">RECOMMAND</a></li>
+                    <Link to={`/`}>
+                        <li>HOME</li>
+                    </Link>
+                    <Link to={`/movie`}>
+                    <li>MOVIE</li>
+                    </Link>
+                    <Link to={`/`}>
+                        <li>RECOMMAND</li>
+                    </Link>
                 </ul>
             </nav>
         </header>
