@@ -17,7 +17,6 @@ function Home(){
     useEffect(()=> {
         getMovies();
     }, []);
-    console.log(movies);
     return ( 
         <div className={styles.home__container}> 
             <div className={styles.insert__container}>

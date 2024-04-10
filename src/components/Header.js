@@ -14,8 +14,8 @@ function Header() {
                     <Link to={`/movie`}>
                     <li>MOVIE</li>
                     </Link>
-                    <Link to={`/`}>
-                        <li>RECOMMAND</li>
+                    <Link to={`/recommend`}>
+                        <li>RECOMMEND</li>
                     </Link>
                 </ul>
             </nav>

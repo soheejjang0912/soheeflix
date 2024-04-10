@@ -6,6 +6,7 @@ import {
 import Home from "./routes/Home";
 import List from "./routes/List";
 import Detail from "./routes/Detail";
+import Recommend from "./routes/Recommend";
 import "./css/App.module.css";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />}/>
         <Route path="/movie" element={<List />}/>
         <Route path="/movie/:id" element={<Detail />}/>
+        <Route path="/recommend" element={<Recommend />}/>
       </Routes>
     </Router>
   );
