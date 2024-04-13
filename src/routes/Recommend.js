@@ -6,7 +6,7 @@ import sohee from "../img/sohee.jpg";
 
 function Recommend(){
     const [messageContent, setMessageContent] = useState("");
-    const [messages, setMessages] = useState([]);
+    const [messages, setMessages] = useState("");
     const [recommendMovies, setRecommendMovies] = useState([]);
    
     // 메시지 입력값 변경 시 호출되는 함수
@@ -17,11 +17,10 @@ function Recommend(){
     // 전송 버튼 클릭 시 호출되는 함수
     const sendButtonClick = () => {
         // 입력한 메시지를 메시지 목록에 추가하고, 메시지 내용 초기화
-        setMessages([...messages, messageContent]);
+        setMessages(messageContent);
         setMessageContent("");
 
         recommendMoviesApi();
-        
     };
  
     const recommendMoviesApi = async () => {
@@ -46,30 +45,30 @@ function Recommend(){
                             <p>안녕하세요! 영화 추천을 도와드리겠습니다. 어떤 장르의 영화를 좋아하시나요?</p>
                         </div> 
                     </div> 
-                    <div>
-                        {/* 메시지 목록 렌더링 */}
-                        {messages.map((message, index) => (
-                            <div key={index} className={styles.message__container}>
-                                <div className={styles.message}>
-                                    <p>{message}</p>
-                                </div>
+
+                    <div>  
+                        <div key={messageContent} className={styles.message__container}>
+                            <div className={styles.message}>
+                                <p>{messages}</p>
                             </div>
-                        ))}
+                        </div>
+                    </div>
+                    
+                    <div>
                         {/* 추천 영화 목록 렌더링 */}
-                        {recommendMovies.map((movie, index) => (
-                            <div key={index} className={styles.message__container}>
-                                <div>
-                                    <img src={movie.medium_cover_image} alt={movie.title}></img>
-                                </div>
-                            </div> 
-                            /*<RecommendChat 
-                                key={movie.id}
-                                id={movie.id}
-                                coverImage={movie.medium_cover_image}
-                                title={movie.title}
-                                index={movie.index} 
-                            />*/
-                        ))}
+                        { 
+                            <div>
+                                {recommendMovies.map((movie, index) => (
+                                    <RecommendChat 
+                                        key={movie.id}
+                                        id={movie.id}
+                                        coverImage={movie.medium_cover_image}
+                                        title={movie.title}
+                                        index={index} 
+                                    />
+                                ))} 
+                            </div>
+                        } 
                     </div>
                     
                     
