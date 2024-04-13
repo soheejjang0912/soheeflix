@@ -7,13 +7,20 @@ import sohee from "../img/sohee.jpg";
 function Recommend(){
     const [message, setMessage] = useState('');
     const [recommend, setRecommend] = useState([]);
+    const [btnState, setBtnState] = useState(false);
     const scrollRef = useRef(null); 
 
     const handleMessageChange = (event) => {
         setMessage(event.target.value);
     };
 
-    const handleSendMessage = async () => {
+    const buttonGenre = (genre) => { 
+        setBtnState(true);
+        setMessage(genre); 
+        
+    }
+
+    const handleSendMessage = async () => {  
         if (message.trim() !== '') { 
             // 메시지 전송 후 추가적인 처리: 메시지를 입력한 사용자에 대한 메시지를 추가
             setRecommend(recommendContent => [
@@ -21,14 +28,12 @@ function Recommend(){
                 { message, type: 'user' }, // 사용자가 입력한 메시지
                 // API를 통해 받아온 영화 목록을 추가합니다.
                 { message: <p>추천 영화 목록을 가져오는 중입니다...</p>, type: 'sohee' } //임시 메시지
-            ]);
-            setMessage('');
-    
+            ]); 
+            scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
             try {
-                const response = await fetch(`https://yts-proxy.now.sh/list_movies.json?genre=${message}`);
+                const response = await fetch(`https://yts-proxy.now.sh/list_movies.json?limit=3&genre=${message}`);
                 const json = await response.json(); 
-                const movies = json.data.movies.slice(0, 3); // 상위 3개의 영화만 선택합니다.
-    
+                const movies = json.data.movies; // 상위 3개의 영화만 선택합니다. 
                 // 받아온 영화 목록을 메시지로 추가합니다.
                 setRecommend(recommendContent => [
                     ...recommendContent.slice(0, -1), // 임시 메시지는 제거합니다.
@@ -39,35 +44,57 @@ function Recommend(){
                                     key={movie.id}
                                     id={movie.id}
                                     coverImage={movie.medium_cover_image}
-                                    title={movie.title}
-                                    summary={movie.summary}
+                                    title={movie.title_long}
                                     runtime={movie.runtime}
                                     rating={movie.rating}
+                                    synopsis={movie.synopsis}
                                 />
                             ), 
                             type: 'sohee' 
                         })), // 각 영화 제목을 메시지로 추가합니다.
-                    { message:
-                        <p>
-                            마음에 드셨나요? 영화를 추천받고 싶으면 좋아하는 장르를 다시 입력해 주세요.
-                        </p>
+                    { message: 
+                        <div>
+                            <p>
+                                마음에 드셨나요? 영화를 추천받고 싶으면 좋아하는 장르를 다시 입력해 주세요.
+                            </p> 
+                            <button className={styles.button} onClick={() => buttonGenre('comedy')}>코미디</button> 
+                            <button className={styles.button} onClick={() => buttonGenre('action')}>액션</button>
+                            <button className={styles.button} onClick={() => buttonGenre('history')}>역사</button>
+                            <button className={styles.button} onClick={() => buttonGenre('romance')}>로맨스</button>
+                        </div>
+                        
+                        
                     , type: 'sohee' } // 완료 메시지를 추가합니다.
                 ]);
+                setMessage('');
             } catch (error) {
                 console.error(<p>영화 목록을 가져오는 도중 오류가 발생했습니다:</p>, error);
                 setRecommend(recommendContent => [
                     ...recommendContent.slice(0, -1), // 임시 메시지는 제거합니다.
                     { message: <p>영화 목록을 가져오는 도중 오류가 발생했습니다. 영화를 추천받고 싶으면 좋아하는 장르를 다시 입력해 주세요.</p>, type: 'sohee' } // 오류 메시지를 추가합니다.
                 ]);
+                setMessage('');
             }
+            
+        }else{
+            handleSendMessage();
         }
     }; 
-    
-
+    /* 
     // 채팅 메시지가 업데이트될 때마다 스크롤을 아래로 이동
     useEffect(() => { 
         scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }, [recommend]); 
+    }, [message]); 
+*/
+
+    // 채팅 메시지가 업데이트될 때마다 스크롤을 아래로 이동
+    useEffect(() => {  
+        if(btnState===true){ 
+            handleSendMessage();
+            setBtnState(false);
+        }
+    }, [message, btnState]); 
+
     return (
         <div>
             <Header />
@@ -78,7 +105,11 @@ function Recommend(){
                             <img className={styles.size} src={sohee} alt="이미지" />
                         </div>
                         <div className={styles.sohee}>
-                            <p>안녕하세요! 영화 추천을 도와드리겠습니다. 어떤 장르의 영화를 좋아하시나요?</p>
+                            <p>안녕하세요! 영화 추천을 도와드리겠습니다. 어떤 장르의 영화를 좋아하시나요?</p> 
+                            <button className={styles.button} onClick={() => buttonGenre('comedy')}>코미디</button> 
+                            <button className={styles.button} onClick={() => buttonGenre('action')}>액션</button>
+                            <button className={styles.button} onClick={() => buttonGenre('history')}>역사</button>
+                            <button className={styles.button} onClick={() => buttonGenre('romance')}>로맨스</button>
                         </div> 
                     </div>  
 
@@ -115,7 +146,7 @@ function Recommend(){
                     <input 
                         type="text" 
                         className={styles.input__field} 
-                        placeholder="메시지를 입력하세요..." 
+                        placeholder="comedy, history, action, romance.. " 
                         value={message}
                         onChange={handleMessageChange} 
                     />

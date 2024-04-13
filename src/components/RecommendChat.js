@@ -1,6 +1,6 @@
 import styles from "../css/Recommend.module.css";
 
-function RecommendChat({id, coverImage, title, summary,runtime,rating}){
+function RecommendChat({id, coverImage, title, synopsis,runtime,rating}){
     return ( 
         <div key={id} className={styles.recommend__display}>  
             <div className={styles.img}>
@@ -10,7 +10,7 @@ function RecommendChat({id, coverImage, title, summary,runtime,rating}){
                 <p>{title}</p> 
                 <p>runtime : {runtime}</p> 
                 <p>rating : {rating}</p> 
-                <p>{summary}</p>
+                <p>{synopsis}</p>
             </div>
         </div> 
     );

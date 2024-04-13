@@ -47,8 +47,7 @@ function Home(){
         getMovies();
         getComedyMovies();
         getActionMovies();
-    }, []); 
-    console.log(loading);
+    }, []);  
     return (
         <div>
             <Header />
