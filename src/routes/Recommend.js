@@ -27,17 +27,17 @@ function Recommend(){
                 ...recommendContent,
                 { message, type: 'user' }, // 사용자가 입력한 메시지
                
-                { message: <p>추천 영화 목록을 가져오는 중입니다...</p>, type: 'sohee' } //임시 메시지
+                { message: <p>Getting a list of recommended movies...</p>, type: 'sohee' } //임시 메시지
             ]); 
             
             try {
                 const response = await fetch(`https://yts-proxy.now.sh/list_movies.json?limit=3&genre=${message}`);
                 const json = await response.json(); 
-                const movies = json.data.movies; // 상위 3개의 영화만 선택합니다. 
+                const movies = json.data.movies; // 상위 3개의 영화만 선택
                 scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-                // 받아온 영화 목록을 메시지로 추가합니다.
+                // 받아온 영화 목록을 메시지로 추가
                 setRecommend(recommendContent => [
-                    ...recommendContent.slice(0, -1), // 임시 메시지는 제거합니다.
+                    ...recommendContent.slice(0, -1), // 임시 메시지는 제거
                     ...movies.map(movie => (
                         { 
                             message: ( 
@@ -52,11 +52,11 @@ function Recommend(){
                                 />
                             ), 
                             type: 'sohee' 
-                        })), // 각 영화 제목을 메시지로 추가합니다.
+                        })), // 각 영화 제목을 메시지로 추가
                     { message: 
                         <div>
                             <p>
-                                마음에 드셨나요? 영화를 추천받고 싶으면 좋아하는 장르를 다시 입력해 주세요.
+                            Did you like it? If you want a movie recommendation, please re-enter your favorite genre.
                             </p> 
                             <button className={styles.button} onClick={() => buttonGenre('comedy')}>코미디</button> 
                             <button className={styles.button} onClick={() => buttonGenre('action')}>액션</button>
@@ -68,10 +68,10 @@ function Recommend(){
                 ]);
                 setMessage('');
             } catch (error) {
-                console.error(<p>영화 목록을 가져오는 도중 오류가 발생했습니다:</p>, error);
+                console.error(<p>Error getting movie list:</p>, error);
                 setRecommend(recommendContent => [
                     ...recommendContent.slice(0, -1), // 임시 메시지는 제거
-                    { message: <p>영화 목록을 가져오는 도중 오류가 발생했습니다. 영화를 추천받고 싶으면 좋아하는 장르를 다시 입력해 주세요.</p>, type: 'sohee' } // 오류 메시지를 추가합니다.
+                    { message: <p>An error occurred while fetching the movie list. If you want to recommend a movie, please re-enter your favorite genre.</p>, type: 'sohee' } // 오류 메시지를 추가합니다.
                 ]);
                 setMessage('');
             }
@@ -97,11 +97,12 @@ function Recommend(){
                             <img className={styles.size} src={sohee} alt="이미지" />
                         </div>
                         <div className={styles.sohee}>
-                            <p>안녕하세요! 영화 추천을 도와드리겠습니다. 어떤 장르의 영화를 좋아하시나요?</p> 
-                            <button className={styles.button} onClick={() => buttonGenre('comedy')}>코미디</button> 
-                            <button className={styles.button} onClick={() => buttonGenre('action')}>액션</button>
-                            <button className={styles.button} onClick={() => buttonGenre('history')}>역사</button>
-                            <button className={styles.button} onClick={() => buttonGenre('romance')}>로맨스</button>
+                            <p>Hello! Let me help you recommend a movie. What genre of movie do you like?</p> 
+                            <button className={styles.button} onClick={() => buttonGenre('comedy')}>Comedy</button> 
+                            <button className={styles.button} onClick={() => buttonGenre('action')}>Action</button>
+                            <button className={styles.button} onClick={() => buttonGenre('history')}>History</button>
+                            <button className={styles.button} onClick={() => buttonGenre('romance')}>Romance</button>
+                            <button className={styles.button} onClick={() => buttonGenre('music')}>Music</button>
                         </div> 
                     </div>  
 
@@ -138,7 +139,7 @@ function Recommend(){
                     <input 
                         type="text" 
                         className={styles.input__field} 
-                        placeholder="comedy, history, action, romance.. " 
+                        placeholder="Comedy, Action, History.. " 
                         value={message}
                         onChange={handleMessageChange} 
                     />

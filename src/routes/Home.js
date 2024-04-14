@@ -22,7 +22,7 @@ function Home(){
             <div className={styles.insert__container}>
                 <h1 className={styles.title}>SOHEEFLIX</h1>
                 <Link to={`/movie/`}>
-                    <button className={styles.button}> 무료로 시작하기</button>
+                    <button className={styles.button}>Start for free</button>
                 </Link>
             </div> 
             <div className={styles.block__container}></div>

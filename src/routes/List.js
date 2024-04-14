@@ -56,7 +56,7 @@ function Home(){
                 : (
                     <div>
                         <div >
-                            <h1 className={cstyles.normal__font}>최신 영화</h1>
+                            <h1 className={cstyles.normal__font}>Newly released movies</h1>
                             <div className={styles.image_container}> 
                                 {
                                     movies.map((movie, index)=>
@@ -73,7 +73,7 @@ function Home(){
                         </div>
                         
                         <div>
-                            <h1 className={cstyles.normal__font}>고평점 영화</h1>
+                            <h1 className={cstyles.normal__font}>Hight rated movies</h1>
                             <div className={styles.image_container}> 
                                 {
                                     goodmMovies.map((movie, index)=>
@@ -90,7 +90,7 @@ function Home(){
                         </div>
 
                         <div >
-                            <h1 className={cstyles.normal__font}>코미디 영화</h1>
+                            <h1 className={cstyles.normal__font}>Comedy Movives</h1>
                             <div className={styles.image_container}> 
                                 {
                                     comedyMovies.map((movie, index)=>
@@ -107,7 +107,7 @@ function Home(){
                         </div>
 
                         <div >
-                            <h1 className={cstyles.normal__font}>액션 영화</h1>
+                            <h1 className={cstyles.normal__font}>Action Movives</h1>
                             <div className={styles.image_container}> 
                                 {
                                     actionmMovies.map((movie, index)=>
