@@ -26,14 +26,15 @@ function Recommend(){
             setRecommend(recommendContent => [
                 ...recommendContent,
                 { message, type: 'user' }, // 사용자가 입력한 메시지
-                // API를 통해 받아온 영화 목록을 추가합니다.
+               
                 { message: <p>추천 영화 목록을 가져오는 중입니다...</p>, type: 'sohee' } //임시 메시지
             ]); 
-            scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+            
             try {
                 const response = await fetch(`https://yts-proxy.now.sh/list_movies.json?limit=3&genre=${message}`);
                 const json = await response.json(); 
                 const movies = json.data.movies; // 상위 3개의 영화만 선택합니다. 
+                scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
                 // 받아온 영화 목록을 메시지로 추가합니다.
                 setRecommend(recommendContent => [
                     ...recommendContent.slice(0, -1), // 임시 메시지는 제거합니다.
@@ -61,39 +62,30 @@ function Recommend(){
                             <button className={styles.button} onClick={() => buttonGenre('action')}>액션</button>
                             <button className={styles.button} onClick={() => buttonGenre('history')}>역사</button>
                             <button className={styles.button} onClick={() => buttonGenre('romance')}>로맨스</button>
-                        </div>
-                        
-                        
-                    , type: 'sohee' } // 완료 메시지를 추가합니다.
+                            <button className={styles.button} onClick={() => buttonGenre('music')}>음악</button>
+                        </div> 
+                    , type: 'sohee' } // 완료 메시지
                 ]);
                 setMessage('');
             } catch (error) {
                 console.error(<p>영화 목록을 가져오는 도중 오류가 발생했습니다:</p>, error);
                 setRecommend(recommendContent => [
-                    ...recommendContent.slice(0, -1), // 임시 메시지는 제거합니다.
+                    ...recommendContent.slice(0, -1), // 임시 메시지는 제거
                     { message: <p>영화 목록을 가져오는 도중 오류가 발생했습니다. 영화를 추천받고 싶으면 좋아하는 장르를 다시 입력해 주세요.</p>, type: 'sohee' } // 오류 메시지를 추가합니다.
                 ]);
                 setMessage('');
             }
-            
         }else{
             handleSendMessage();
         }
     }; 
-    /* 
-    // 채팅 메시지가 업데이트될 때마다 스크롤을 아래로 이동
-    useEffect(() => { 
-        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }, [message]); 
-*/
-
-    // 채팅 메시지가 업데이트될 때마다 스크롤을 아래로 이동
+ 
     useEffect(() => {  
         if(btnState===true){ 
             handleSendMessage();
             setBtnState(false);
         }
-    }, [message, btnState]); 
+    }, [message]); 
 
     return (
         <div>
