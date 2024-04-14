@@ -58,11 +58,11 @@ function Recommend(){
                             <p>
                             Did you like it? If you want a movie recommendation, please re-enter your favorite genre.
                             </p> 
-                            <button className={styles.button} onClick={() => buttonGenre('comedy')}>코미디</button> 
-                            <button className={styles.button} onClick={() => buttonGenre('action')}>액션</button>
-                            <button className={styles.button} onClick={() => buttonGenre('history')}>역사</button>
-                            <button className={styles.button} onClick={() => buttonGenre('romance')}>로맨스</button>
-                            <button className={styles.button} onClick={() => buttonGenre('music')}>음악</button>
+                            <button className={styles.button} onClick={() => buttonGenre('comedy')}>Comedy</button> 
+                            <button className={styles.button} onClick={() => buttonGenre('action')}>Action</button>
+                            <button className={styles.button} onClick={() => buttonGenre('history')}>History</button>
+                            <button className={styles.button} onClick={() => buttonGenre('romance')}>Romance</button>
+                            <button className={styles.button} onClick={() => buttonGenre('music')}>Music</button>
                         </div> 
                     , type: 'sohee' } // 완료 메시지
                 ]);
